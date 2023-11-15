@@ -3,11 +3,14 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { ShopComponent } from './shop.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { ServerErrorComponent } from '../core/server-error/server-error.component';
+import { NotFoundComponent } from '../core/not-found/not-found.component';
 
 const routes: Routes = [
   
   {path:'',component:ShopComponent},
-  {path:':id',component:ProductDetailsComponent},
+  {path:':id',component:ProductDetailsComponent, 
+  data:{breadcrumb:{alais: 'productDetails'}}},
 ]
 
 
