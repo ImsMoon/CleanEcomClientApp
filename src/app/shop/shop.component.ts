@@ -26,18 +26,35 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     this.getProducts();
+    this.getBrands();
+    this.getTypes();
   }
 
 
   getProducts() {
     this.service.getProducts(this.shopParams).subscribe({
-      next: response => this.products = response.data,
-      error: error => console.log(error),
-      complete: () => {
-        console.log('request completed');
-        console.log('extra statment');
-      }
-    });
+      next: response => {
+        this.products = response.data;
+        this.shopParams.pageNumber = response.pageIndex;
+        this.shopParams.pageSize = response.pageSize;
+        this.totalCount = response.count;
+      },
+      error: error => console.log(error)
+    })
+  }
+
+  getBrands() {
+    this.service.getBrands().subscribe({
+      next: response => this.brands = [{id: 0, name: 'All'}, ...response],
+      error: error => console.log(error)
+    })
+  }
+
+  getTypes() {
+    this.service.getTypes().subscribe({
+      next: response => this.types = [{id: 0, name: 'All'}, ...response],
+      error: error => console.log(error)
+    })
   }
 
   onBrandSelected(brandId:number){
