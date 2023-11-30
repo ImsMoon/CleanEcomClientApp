@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AccountService } from 'src/app/account/account.service';
 import { BasketService } from 'src/app/basket/basket.service';
-import { Basket } from 'src/app/shared/Models/basket';
+import { Basket, BasketItem } from 'src/app/shared/Models/basket';
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,10 +12,13 @@ import { Basket } from 'src/app/shared/Models/basket';
 export class NavBarComponent implements OnInit {
 
   basket$ :Observable<Basket | null> | undefined;
-  constructor(private basketService:BasketService) { }
+  constructor(public basketService:BasketService, public accountService:AccountService) { }
 
   ngOnInit(): void {
-    this.basket$ = this.basketService.basketSource$;
+  }
+
+  getCount(items:BasketItem[]){
+    return items.reduce((sum,item) => sum + item.quantity,0);
   }
 
 }

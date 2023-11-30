@@ -3,7 +3,6 @@ import { Product } from 'src/app/shared/Models/product';
 import { ShopService } from '../shop.service';
 import { ActivatedRoute } from '@angular/router';
 import { BreadcrumbService } from 'xng-breadcrumb';
-import { BindingScope } from '@angular/compiler/src/render3/view/template';
 import { BasketService } from 'src/app/basket/basket.service';
 
 @Component({
