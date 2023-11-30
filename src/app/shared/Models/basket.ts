@@ -1,5 +1,4 @@
 import * as cuid from 'cuid';
-import { Interface } from 'readline';
 
 
 export interface Basket {

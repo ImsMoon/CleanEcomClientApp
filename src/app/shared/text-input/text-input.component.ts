@@ -1,7 +1,5 @@
 import { Component, ElementRef, Input, OnInit, Self, ViewChild } from '@angular/core';
 import { ControlValueAccessor, UntypedFormControl, NgControl } from '@angular/forms';
-import { publicDecrypt } from 'crypto';
-
 @Component({
   selector: 'app-text-input',
   templateUrl: './text-input.component.html',
